@@ -16,3 +16,5 @@ aws dynamodb create-table --table-name course-signup_students \
 	--key-schema AttributeName=_id,KeyType=HASH \
 	--provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 \
 	--query TableDescription.TableArn --output text --profile aws-blog.io
+
+aws ses verify-email-identity --email-address course-signup@aws-blog.io --region eu-west-1

@@ -1,7 +1,9 @@
 var ApiBuilder = require('claudia-api-builder'),
 	AWS = require('aws-sdk'),
+	util = require('util'),
 	api = new ApiBuilder(),
-	dynamoDb = new AWS.DynamoDB.DocumentClient();
+	dynamoDb = new AWS.DynamoDB.DocumentClient(),
+	SES = new AWS.SES({region: 'eu-west-1'});
 
 module.exports = api;
 
@@ -73,12 +75,56 @@ var _signup = function (request, courseId, matriculationId, birthday) {
 					.then(function (resultCourse) {
 						if (resultCourse === true) {
 							return _signupStudentForCourse(request, courseId, matriculationId)
-								.then(function (resultSignup) { return resultSignup; });
+								.then(function (resultSignup) {
+									if (resultSignup) { 
+										return _sendConfirmationEmail(request, courseId, matriculationId)
+											.then(function (resultEmail) { return _getSuccessResponse('SIGNUP.SUCCESS'); });
+									}
+									else { return _getErrorResponse('SIGNUP.UNKOWN_ERROR'); }
+								});
 						}
 						else { return resultCourse; }
 					});
 			}
 			else { return resultStudent; }
+		});
+};
+
+var _getEmailContent = function (courseName, recipientName, recipientEmail) {
+	return {
+		Source: 'course-signup@aws-blog.io',
+		Destination: {ToAddresses: [recipientEmail]},
+		Message: {
+			Subject: {Data: util.format('Course Signup Confirmation: %s', courseName)},
+			Body: {Text: {Data: util.format('Hi %s,\n\nyou just signed up successfully to the course %s.\n\nRegards\nCourse Signup Admin', recipientName, courseName)}}
+		}
+	};
+};
+
+var _sendConfirmationEmail = function (request, courseId, matriculationId) {
+	return dynamoDb.get({TableName: request.env.tableNameCourses, Key: {_id: courseId}}).promise()
+		.then(function (resultCourse) {
+			var course = (resultCourse && resultCourse.Item);
+			if (course) {
+				return dynamoDb.scan({
+					TableName: request.env.tableNameStudents,
+					ProjectionExpression: "#n, #e",
+					FilterExpression: "#mid = :matriculationId",
+					ExpressionAttributeNames: {"#mid": "matriculationId", "#n": "name", "#e": "email"},
+					ExpressionAttributeValues: {':matriculationId': matriculationId}
+				})
+					.promise()
+					.then(function (resultStudent) {
+						var student = (resultStudent && resultStudent.Items && resultStudent.Items[0]);
+						if (student) {
+							SES.sendEmail(_getEmailContent(course.name, student.name, student.email))
+							.promise()
+							.then(function (resultEmail) { return _getSuccessResponse('EMAIL.SUCCESS'); });
+						}
+						else { return _getErrorResponse('EMAIL.STUDENT.NOT_FOUND'); }
+					})
+			}
+			else { return _getErrorResponse('EMAIL.COURSE.NOT_FOUND'); }
 		});
 };
 
@@ -126,7 +172,7 @@ var _signupStudentForCourse = function (request, courseId, matriculationId) {
 
 	return dynamoDb.update(params).promise()
 		.then(function (result) {
-			return (result ? _getSuccessResponse('SUCCESS') : _getErrorResponse('UNKNOWN_ERROR'));
+			return !!result;
 		});
 };
 
