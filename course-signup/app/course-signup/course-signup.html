@@ -1,0 +1,38 @@
+<h1>Course Sign Up</h1>
+
+<h2 id="result"></h2>
+
+<div class="table">
+	<div class="tr">
+		<div class="td">Course</div>
+		<div class="td">
+			<select ng-model="selectedCourse" ng-options="course.name for course in courses">
+				<option value="" disabled selected>Select Course</option>
+			</select>
+		</div>
+	</div>
+	<div class="tr">
+		<div class="td">Free Places<br/>(might be inaccurate)</div>
+		<div class="td">{{selectedCourse ? selectedCourse.placesFree : '-'}}</div>
+	</div>
+	<div class="tr"><td class="td"><div class="spacer"></div></td></div>
+	<div class="tr">
+		<div class="td"><label for="MatriculationId">Matriculation ID</label></div>
+		<div class="td"><input type="text" id="MatriculationId" ng-model="matriculationId" /></div>
+	</div>
+	<div class="tr">
+		<div class="td"><label for="Birthday">Birthday</label></div>
+		<div class="td">
+			<datepicker date-format="dd/MM/yyyy">
+				<input ng-model="birthday" type="text" />
+			</datepicker>
+		</div>
+	</div>
+	<div class="tr"><td class="td"><div class="spacer"></div></td></div>
+	<div class="tr">
+		<div class="td"></div>
+		<div class="td">
+			<input type="submit" id="signup" ng-click="signup(selectedCourse._id, matriculationId, birthday)" value="Signup" />
+		</div>
+	</div>
+</div>

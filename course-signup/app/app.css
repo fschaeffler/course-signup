@@ -1,0 +1,50 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li + li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+
+div.table { 
+  display: table; 
+  border-collapse: collapse; 
+}
+div.tr { 
+  display: table-row; 
+}
+div.td { 
+  display: table-cell; 
+  padding: 5px; 
+}
+
+select {
+	width: 125px;
+}
+
+input {
+	width: 125px;
+}
+
+.spacer {
+	height: 25px;
+}
