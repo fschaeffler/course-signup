@@ -17,7 +17,7 @@ api.post('/signup', function (request) {
 	var matriculationNumber = request && request.body && request.body.matriculationNumber;
 	var birthday = request && request.body && request.body.birthday;
 
-	if (!courseId || !matriculationNumber || !birthday) { return 'SIGNUP.MISSING_PARAMETERS'; }
+	if (!courseId || !matriculationNumber || !birthday) { throw new Error('SIGNUP.MISSING_PARAMETERS'); }
 	else { return _signup(courseId, matriculationNumber, birthday); }
 });
 

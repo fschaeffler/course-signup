@@ -1,0 +1,6 @@
+{
+  "requestContext": {
+    "resourcePath": "/signup",
+    "httpMethod": "POST"
+  }
+}
