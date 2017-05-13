@@ -26,14 +26,19 @@ angular.module('courseSignupApp.course-signup', ['ngRoute'])
 
 		$http.post('https://vlsdhgc3r0.execute-api.eu-central-1.amazonaws.com/latest/signup', data).
 			success(function(data) {
-				(angular.element(document.querySelector('#result'))).text(data.status + ': ' + data.message);
-
-				if (data.status === 'SUCCESS') {
-					$scope.selectedCourse.placesFree--;
-				}
+				_setMessage($scope, data);
+				if (data.status === 'SUCCESS') { $scope.selectedCourse.placesFree--; }
 			}).
 			error(function(data) {
-				(angular.element(document.querySelector('#result'))).text('ERROR: ' + (data && data.errorMessage));
+				_setMessage($scope, data);
 			});
 	};
 });
+
+var _setMessage = function (scope, data) {
+	(angular.element(document.querySelector('#result'))).html(data.status + ':<br/>' + data.message);
+
+	setTimeout(function () {
+		(angular.element(document.querySelector('#result'))).html('&nbsp;');
+	}, 3000);
+};
