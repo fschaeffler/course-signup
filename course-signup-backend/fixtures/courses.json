@@ -1,0 +1,24 @@
+{
+	"courses": [
+		{
+			"_id": "3CZWLtB4ZgAqXNB4f",
+			"name": "Course 1",
+			"placesMax": 25
+		},
+		{
+			"_id": "3DjZjbzBag69RCxNz",
+			"name": "Course 2",
+			"placesMax": 50
+		},
+		{
+			"_id": "ARyy9y38BXypKr8ds",
+			"name": "Course 3",
+			"placesMax": 100
+		},
+		{
+			"_id": "jjbqgZFGadZTkm5ac",
+			"name": "Course 4",
+			"placesMax": 25
+		}
+	]
+}

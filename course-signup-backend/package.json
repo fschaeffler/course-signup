@@ -3,9 +3,15 @@
   "version": "1.0.0",
   "description": "backend for course signup running on AWS Lambda",
   "main": "app.js",
-  "author": "",
-  "license": "ISC",
+  "author": "Florian Schaeffler",
   "dependencies": {
+    "aws-sdk": "^2.50.0",
     "claudia-api-builder": "^2.4.2"
+  },
+  "scripts": {
+    "create": "claudia create --api-module app --policies policies --configure-db --region eu-central-1 --profile aws-blog.io",
+    "deploy": "claudia update --region eu-central-1 --profile aws-blog.io",
+    "reconfigure": "claudia update --policies policies --region eu-central-1 --configure-db --profile aws-blog.io",
+    "import-fixtures": "node fixtures/courses.js"
   }
 }
