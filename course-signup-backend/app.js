@@ -117,9 +117,9 @@ var _sendConfirmationEmail = function (request, courseId, matriculationId) {
 					.then(function (resultStudent) {
 						var student = (resultStudent && resultStudent.Items && resultStudent.Items[0]);
 						if (student) {
-							SES.sendEmail(_getEmailContent(course.name, student.name, student.email))
-							.promise()
-							.then(function (resultEmail) { return _getSuccessResponse('EMAIL.SUCCESS'); });
+							return SES.sendEmail(_getEmailContent(course.name, student.name, student.email))
+								.promise()
+								.then(function (resultEmail) { return _getSuccessResponse('EMAIL.SUCCESS'); });
 						}
 						else { return _getErrorResponse('EMAIL.STUDENT.NOT_FOUND'); }
 					})
