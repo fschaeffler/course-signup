@@ -9,4 +9,10 @@ aws dynamodb create-table --table-name course-signup_courses \
 	--attribute-definitions AttributeName=_id,AttributeType=S \
 	--key-schema AttributeName=_id,KeyType=HASH \
 	--provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 \
-	--query TableDescription.TableArn --output text
+	--query TableDescription.TableArn --output text --profile aws-blog.io
+
+aws dynamodb create-table --table-name course-signup_students \
+	--attribute-definitions AttributeName=_id,AttributeType=S \
+	--key-schema AttributeName=_id,KeyType=HASH \
+	--provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 \
+	--query TableDescription.TableArn --output text --profile aws-blog.io

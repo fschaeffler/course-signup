@@ -1,0 +1,18 @@
+{
+	"students": [
+		{
+			"_id": "8LN396udwRZ8Mv4k8",
+			"name": "Doug Heffernan",
+			"matriculationId": "dh-12345",
+			"birthday": "09/02/1965",
+			"email": "doug@aws-blog.io"
+		},
+		{
+			"_id": "LGAt5d3RuL4ddixx9",
+			"name": "Florian Schäffler",
+			"matriculationId": "fs-31337",
+			"birthday": "25/07/1983",
+			"email": "flo@aws-blog.io"
+		}
+	]
+}

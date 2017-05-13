@@ -12,6 +12,7 @@
     "create": "claudia create --api-module app --policies policies --configure-db --region eu-central-1 --profile aws-blog.io",
     "deploy": "claudia update --region eu-central-1 --profile aws-blog.io",
     "reconfigure": "claudia update --policies policies --region eu-central-1 --configure-db --profile aws-blog.io",
-    "import-fixtures": "node fixtures/courses.js"
+    "import-courses": "node fixtures/courses.js",
+    "import-students": "node fixtures/students.js"
   }
 }

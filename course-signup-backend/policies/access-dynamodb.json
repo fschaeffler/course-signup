@@ -9,7 +9,10 @@
         "dynamodb:Scan"
       ],
       "Effect": "Allow",
-      "Resource": "arn:aws:dynamodb:eu-central-1:913654222476:table/course-signup_courses"
+      "Resource": [
+        "arn:aws:dynamodb:eu-central-1:913654222476:table/course-signup_courses",
+        "arn:aws:dynamodb:eu-central-1:913654222476:table/course-signup_students"
+      ]
     }
   ]
 }
