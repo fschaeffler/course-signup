@@ -1,0 +1,11 @@
+{
+  "lambda": {
+    "role": "course-signup-backend-executor",
+    "name": "course-signup-backend",
+    "region": "eu-central-1"
+  },
+  "api": {
+    "id": "8ulyuqvuak",
+    "module": "app"
+  }
+}

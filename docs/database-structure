@@ -1,0 +1,12 @@
+# courses
+- _id
+- name
+- placesMax
+- placesFree
+- matriculationIds
+
+# students
+- _id
+- matriculationId
+- birthday
+- email

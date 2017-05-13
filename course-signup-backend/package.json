@@ -1,0 +1,11 @@
+{
+  "name": "course-signup-backend",
+  "version": "1.0.0",
+  "description": "backend for course signup running on AWS Lambda",
+  "main": "app.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "claudia-api-builder": "^2.4.2"
+  }
+}

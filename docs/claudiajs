@@ -1,0 +1,5 @@
+npm install -g claudia
+npm install claudia-api-builder --save
+claudia create --region eu-central-1 --api-module app --profile aws-blog.io
+claudia update --region eu-central-1 --api-module app --profile aws-blog.io
+curl -X PUT -d test=123 https://8ulyuqvuak.execute-api.eu-central-1.amazonaws.com/latest/signup
