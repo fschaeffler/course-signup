@@ -9,8 +9,10 @@ angular.module('courseSignupApp.course-signup', ['ngRoute'])
 	});
 }])
 
-.controller('View1Ctrl', function($scope, $http) {
-	$http.get('https://course-signup.aws-blog.io/courses').
+.controller('View1Ctrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+	var stage = (($routeParams && $routeParams.stage) ? $routeParams.stage : 'latest');
+
+	$http.get('https://course-signup.aws-blog.io/' + stage + '/courses').
 		then(function(response) {
 			$scope.courses = response.data.sort(function(a, b) {
 				return a.name > b.name;
@@ -24,7 +26,7 @@ angular.module('courseSignupApp.course-signup', ['ngRoute'])
 			birthday: birthday
 		};
 
-		$http.post('https://course-signup.aws-blog.io/signup', data).
+		$http.post('https://course-signup.aws-blog.io/' + stage + '/signup', data).
 			success(function(data) {
 				_setMessage($scope, data);
 				if (data.status === 'SUCCESS') { $scope.selectedCourse.placesFree--; }
@@ -33,7 +35,7 @@ angular.module('courseSignupApp.course-signup', ['ngRoute'])
 				_setMessage($scope, data);
 			});
 	};
-});
+}]);
 
 var _setMessage = function (scope, data) {
 	(angular.element(document.querySelector('#result'))).html(data.status + ':<br/>' + data.message);
