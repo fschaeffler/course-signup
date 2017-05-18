@@ -9,3 +9,7 @@
 ## version 0.0.2
 
 - added confirmation email via SES on signup
+
+## version 0.0.3
+
+- added custom domain name for api-gateway endpoint
