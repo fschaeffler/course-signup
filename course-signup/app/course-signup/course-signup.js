@@ -10,7 +10,7 @@ angular.module('courseSignupApp.course-signup', ['ngRoute'])
 }])
 
 .controller('View1Ctrl', function($scope, $http) {
-	$http.get('https://vlsdhgc3r0.execute-api.eu-central-1.amazonaws.com/latest/courses').
+	$http.get('https://course-signup.aws-blog.io/latest/courses').
 		then(function(response) {
 			$scope.courses = response.data.sort(function(a, b) {
 				return a.name > b.name;
@@ -24,7 +24,7 @@ angular.module('courseSignupApp.course-signup', ['ngRoute'])
 			birthday: birthday
 		};
 
-		$http.post('https://vlsdhgc3r0.execute-api.eu-central-1.amazonaws.com/latest/signup', data).
+		$http.post('https://course-signup.aws-blog.io/latest/signup', data).
 			success(function(data) {
 				_setMessage($scope, data);
 				if (data.status === 'SUCCESS') { $scope.selectedCourse.placesFree--; }
