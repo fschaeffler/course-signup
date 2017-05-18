@@ -13,3 +13,7 @@
 ## version 0.0.3
 
 - added custom domain name for api-gateway endpoint
+
+## version 0.0.4
+
+- added staging configuration
