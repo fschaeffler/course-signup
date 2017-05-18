@@ -17,6 +17,7 @@
     "protractor": "^4.0.9"
   },
   "scripts": {
+    "deploy": "aws s3 sync app s3://course-signup-app.aws-blog.io --profile aws-blog.io",
     "postinstall": "bower install",
     "update-deps": "npm update",
     "postupdate-deps": "bower update",

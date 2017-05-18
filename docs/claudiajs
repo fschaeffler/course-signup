@@ -20,3 +20,5 @@ aws dynamodb create-table --table-name course-signup_students \
 aws ses verify-email-identity --email-address course-signup@aws-blog.io --region eu-west-1
 
 claudia update --region eu-central-1 --configure-db --profile aws-blog.io  --version staging
+
+aws s3 mb s3://course-signup-app.aws-blog.io --profile aws-blog.io

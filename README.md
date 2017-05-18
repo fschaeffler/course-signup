@@ -17,3 +17,7 @@
 ## version 0.0.4
 
 - added staging configuration
+
+## version 0.0.5
+
+- added deployment to S3
