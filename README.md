@@ -1,3 +1,28 @@
+# Setup
+
+# aws cli
+
+```
+sudo apt-get install -y python-pip
+sudo pip install awscli
+```
+
+# node.js (via NVM)
+
+```
+sudo install -y curl
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+nvm install 4
+```
+# claudia.js
+
+```
+npm install claudia -g
+```
+
+
 # Changelog
 
 ##  version 0.0.1
