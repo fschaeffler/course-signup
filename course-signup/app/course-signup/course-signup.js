@@ -10,9 +10,7 @@ angular.module('courseSignupApp.course-signup', ['ngRoute'])
 }])
 
 .controller('View1Ctrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
-	var stage = (($routeParams && $routeParams.stage) ? $routeParams.stage : 'latest');
-
-	$http.get('https://course-signup.aws-blog.io/' + stage + '/courses').
+	$http.get('https://lwynma4spl.execute-api.eu-central-1.amazonaws.com/latest/courses').
 		then(function(response) {
 			$scope.courses = response.data.sort(function(a, b) {
 				return a.name > b.name;
@@ -26,7 +24,7 @@ angular.module('courseSignupApp.course-signup', ['ngRoute'])
 			birthday: birthday
 		};
 
-		$http.post('https://course-signup.aws-blog.io/' + stage + '/signup', data).
+		$http.post('https://lwynma4spl.execute-api.eu-central-1.amazonaws.com/latest/signup', data).
 			success(function(data) {
 				_setMessage($scope, data);
 				if (data.status === 'SUCCESS') { $scope.selectedCourse.placesFree--; }

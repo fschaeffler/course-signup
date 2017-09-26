@@ -5,7 +5,7 @@ const fixtures = require('./courses.json');
 fixtures.courses.forEach(function (course) {
 	var options = {
 		method: 'POST',
-		url: 'https://vlsdhgc3r0.execute-api.eu-central-1.amazonaws.com/latest/courses',
+		url: 'https://lwynma4spl.execute-api.eu-central-1.amazonaws.com/latest/courses',
 		json: course
 	};
 

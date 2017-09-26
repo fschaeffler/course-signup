@@ -9,10 +9,12 @@
     "claudia-api-builder": "^2.4.2"
   },
   "scripts": {
-    "create": "claudia create --api-module app --policies policies --configure-db --region eu-central-1 --profile aws-blog.io",
-    "deploy": "claudia update --region eu-central-1 --profile aws-blog.io",
-    "reconfigure": "claudia update --policies policies --region eu-central-1 --configure-db --profile aws-blog.io",
+    "create": "claudia create --api-module app --policies policies --configure-db --region eu-central-1",
+    "deploy": "claudia update --region eu-central-1",
+    "reconfigure": "claudia update --policies policies --region eu-central-1 --configure-db",
     "import-courses": "node fixtures/courses.js",
-    "import-students": "node fixtures/students.js"
+    "import-students": "node fixtures/students.js",
+    "create-table-courses": "aws dynamodb create-table --region eu-central-1 --table-name course-signup_courses --attribute-definitions AttributeName=_id,AttributeType=S --key-schema AttributeName=_id,KeyType=HASH --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 --query TableDescription.TableArn --output text",
+    "create-table-students": "aws dynamodb create-table --region eu-central-1 --table-name course-signup_students --attribute-definitions AttributeName=_id,AttributeType=S --key-schema AttributeName=_id,KeyType=HASH --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 --query TableDescription.TableArn --output text"
   }
 }
