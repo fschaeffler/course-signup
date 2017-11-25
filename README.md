@@ -28,6 +28,12 @@ npm install claudia -g
 cd course-signup-backend; npm install
 ``
 
+# init claudia and create aws resources
+
+```
+cd course-signup-backend; npm run create
+```
+
 # Changelog
 
 ##  version 0.0.1
