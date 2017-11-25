@@ -34,6 +34,15 @@ cd course-signup-backend; npm install
 cd course-signup-backend; npm run create
 ```
 
+# import test data
+
+Note: you first need to update the endpoints URL accordingly.
+
+
+```
+npm run import-courses; npm run import-students
+```
+
 # Changelog
 
 ##  version 0.0.1

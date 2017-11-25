@@ -9,7 +9,7 @@
     "claudia-api-builder": "^2.4.2"
   },
   "scripts": {
-    "create": "create-table-courses; create-table-students; npm run claudia create --api-module app --policies policies --configure-db --region eu-central-1",
+    "create": "npm run create-table-courses; npm run create-table-students; claudia create --api-module app --policies policies --configure-db --region eu-central-1",
     "deploy": "claudia update --region eu-central-1",
     "reconfigure": "claudia update --policies policies --region eu-central-1 --configure-db",
     "import-courses": "node fixtures/courses.js",
