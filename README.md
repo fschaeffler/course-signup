@@ -22,6 +22,11 @@ npm install npm -g
 npm install claudia -g
 ```
 
+# dependencies
+
+```
+cd course-signup-backend; npm install
+``
 
 # Changelog
 
