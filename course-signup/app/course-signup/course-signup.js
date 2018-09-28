@@ -2,7 +2,7 @@
 
 angular.module('courseSignupApp.course-signup', ['ngRoute'])
 
-.constant('backendUrl', '0phatg75jl.execute-api.eu-central-1.amazonaws.com/latest')
+.constant('backendUrl', 'CHANGE_ME')
 
 .config(['$routeProvider', function($routeProvider) {
 	$routeProvider.when('/course-signup', {
