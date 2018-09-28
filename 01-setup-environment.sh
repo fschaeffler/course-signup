@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# update system
+sudo apt-get update; sudo apt-get upgrade -y
+
 # install aws cli
 sudo apt-get install awscli -y
 
