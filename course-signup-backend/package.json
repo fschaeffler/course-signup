@@ -5,8 +5,8 @@
   "main": "app.js",
   "author": "Florian Schaeffler",
   "dependencies": {
-    "aws-sdk": "^2.50.0",
-    "claudia-api-builder": "^2.4.2"
+    "aws-sdk": "^2.325.0",
+    "claudia-api-builder": "^4.1.1"
   },
   "scripts": {
     "create": "npm run create-table-courses; npm run create-table-students; claudia create --api-module app --policies policies --configure-db --region eu-central-1",
