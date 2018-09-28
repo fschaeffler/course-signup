@@ -60,7 +60,7 @@ input {
   width: 400px;
   height: 784px;
   display: inline-block;
-  background-image: url('../images/android.png');
+  background-image: url('images/android.png');
 }
 
 .android-container-3 {

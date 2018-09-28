@@ -10,7 +10,7 @@
     "http-server": "^0.9.0"
   },
   "scripts": {
-    "deploy": "aws s3 sync app s3://change-me_course-signup --delete",
+    "deploy": "aws s3 sync app s3://florian-schaeffler-course-signup --delete",
     "postinstall": "bower install",
     "update-deps": "npm update",
     "postupdate-deps": "bower update",
