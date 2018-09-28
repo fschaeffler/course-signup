@@ -1,0 +1,5 @@
+{
+  "courses_arn": "arn:aws:dynamodb:eu-central-1:913654222476:table/course-signup_courses",
+  "students_arn": "arn:aws:dynamodb:eu-central-1:913654222476:table/course-signup_students",
+  "claudia_app_id": "0phatg75jl"
+}

@@ -2,6 +2,8 @@
 
 angular.module('courseSignupApp.course-signup', ['ngRoute'])
 
+.constant('backendUrl', '0phatg75jl.execute-api.eu-central-1.amazonaws.com/latest')
+
 .config(['$routeProvider', function($routeProvider) {
 	$routeProvider.when('/course-signup', {
 		templateUrl: 'course-signup/course-signup.html',
@@ -9,8 +11,8 @@ angular.module('courseSignupApp.course-signup', ['ngRoute'])
 	});
 }])
 
-.controller('View1Ctrl', function($scope, $http) {
-	$http.get('https://vlsdhgc3r0.execute-api.eu-central-1.amazonaws.com/latest/courses').
+.controller('View1Ctrl', function($scope, $http, backendUrl) {
+	$http.get('https://' + backendUrl + '/courses').
 		then(function(response) {
 			$scope.courses = response.data.sort(function(a, b) {
 				return a.name > b.name;
@@ -24,7 +26,7 @@ angular.module('courseSignupApp.course-signup', ['ngRoute'])
 			birthday: birthday
 		};
 
-		$http.post('https://vlsdhgc3r0.execute-api.eu-central-1.amazonaws.com/latest/signup', data).
+		$http.post('https://' + backendUrl + '/signup', data).
 			success(function(data) {
 				_setMessage($scope, data);
 				if (data.status === 'SUCCESS') { $scope.selectedCourse.placesFree--; }
