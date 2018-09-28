@@ -16,6 +16,8 @@ aws iam put-role-policy \
 	--policy-name access-ses \
 	--policy-document file://$script_location/../course-signup-backend/policies/access-ses.json
 
+$script_location/04-setup-frontend.sh
+
 cd $script_location/../course-signup-backend
 
 claudia update --policies policies/*.json
